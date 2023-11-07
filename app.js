@@ -1,6 +1,6 @@
 import express from 'express';
 import Hello from "./hello.js"
-import Lab5 from "./Lab5/lab5.js";
+import Lab5 from "./Lab5/Lab5.js";
 import CourseRoutes from "./Courses/routes.js";
 import cors from "cors";
 import ModuleRoutes from "./Modules/routes.js";

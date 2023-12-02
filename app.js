@@ -14,6 +14,9 @@ import UserRoutes from "./users/routes.js";
 import session from "express-session";
 
 const app = express()
+console.log(process.env.FRONTEND_URL)
+console.log(process.env.DB_CONNECTION_STRING)
+
 app.use(
     cors({
         credentials: true,

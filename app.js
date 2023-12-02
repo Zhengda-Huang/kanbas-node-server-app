@@ -8,11 +8,9 @@ import AssignmentRoutes from "./Assignment/routes.js";
 import "dotenv/config";
 import mongoose from "mongoose";
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/kanbas'
-
+console.log(CONNECTION_STRING)
 mongoose.connect(CONNECTION_STRING);
 import UserRoutes from "./users/routes.js";
-import "dotenv/config";
-
 import session from "express-session";
 
 const app = express()
@@ -23,8 +21,6 @@ app.use(
     })
 );
 
-console.log(process.env.FRONTEND_URL)
-
 const sessionOptions = {
     secret: "any string",
     resave: false,
@@ -32,6 +28,7 @@ const sessionOptions = {
 };
 
 if (process.env.NODE_ENV !== "development") {
+    console.log("not dev")
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",

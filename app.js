@@ -31,10 +31,10 @@ const sessionOptions = {
 };
 if (process.env.NODE_ENV !== "development") {
     console.log('not deve')
-    // sessionOptions.proxy = true;
+    sessionOptions.proxy = true;
     sessionOptions.cookie = {
-        // sameSite: "none",
-        // secure: true,
+        sameSite: "none",
+        secure: true,
     };
 }
 app.use(session(sessionOptions));

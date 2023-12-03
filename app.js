@@ -15,7 +15,7 @@ import session from "express-session";
 
 const app = express()
 console.log(process.env.FRONTEND_URL)
-console.log(process.env.DB_CONNECTION_STRING)
+console.log(process.env.NODE_ENV)
 
 app.use(
     cors({
@@ -29,15 +29,16 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: false,
 };
+if (process.env.NODE_ENV !== "development") {
+    console.log('not deve')
+    // sessionOptions.proxy = true;
+    sessionOptions.cookie = {
+        // sameSite: "none",
+        // secure: true,
+    };
+}
+app.use(session(sessionOptions));
 
-// if (process.env.NODE_ENV !== "development") {
-//     console.log("not dev")
-//     sessionOptions.proxy = true;
-//     sessionOptions.cookie = {
-//         sameSite: "none",
-//         secure: true,
-//     };
-// }
 
 
 app.use(
